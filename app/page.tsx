@@ -8,7 +8,7 @@ export default function Home() {
           <h2 className="mt-10 scroll-m-20 text-center text-3xl font-semibold tracking-tight transition-colors first:mt-0">
               Проанализируйте любую заявку к конкурсу с помощью модели AI
           </h2>
-          <Link href={routes.competitions} >
+          <Link href={routes.contests} >
               <Button>
                   Приступить
               </Button>

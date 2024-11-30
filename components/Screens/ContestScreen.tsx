@@ -1,6 +1,6 @@
 import { ApplicationCard } from "@/components/Applications/ApplicationCard/ApplicationCard";
 import { mockApplications } from "@/components/Applications/mockApplications";
-import { CriteriaFilter } from "@/components/Сontests/ContestFilter/CriteriaFilter";
+import { CriteriaFilter } from "@/components/Contests/ContestFilter/CriteriaFilter";
 import { Card } from "@/components/ui/card";
 import { Pencil } from "lucide-react";
 import { Badge } from "@/components/ui/badge";

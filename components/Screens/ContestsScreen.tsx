@@ -1,8 +1,8 @@
-import { mockContests } from "@/components/Сontests/mockContests";
-import { ContestCard } from "@/components/Сontests/ContestCard/ContestCard";
+import { mockContests } from "@/components/Contests/mockContests";
+import { ContestCard } from "@/components/Contests/ContestCard/ContestCard";
 import { cookies } from "next/headers";
 import useSupabaseServer from "@/lib/supabase/server";
-import { ApplicationsCarousel } from "../Сontests/ApplicationsCarousel/ApplicationsCarousel";
+import { ApplicationsCarousel } from "../Contests/ApplicationsCarousel/ApplicationsCarousel";
 
 export async function ContestsScreen() {
     const cookieStore = await cookies();

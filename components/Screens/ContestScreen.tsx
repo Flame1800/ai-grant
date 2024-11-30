@@ -1,7 +1,6 @@
 'use client';
 
 import { ApplicationCard } from "@/components/Applications/ApplicationCard/ApplicationCard";
-import { CriteriaFilter } from "@/components/Сontests/ContestFilter/CriteriaFilter";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { NominationsSelect } from "@/components/Screens/NominationsSelect";
@@ -12,6 +11,7 @@ import Link from "next/link";
 import {routes} from "@/constants/routes";
 import {Button} from "@/components/ui/button";
 import {ArrowLeftIcon} from "lucide-react";
+import {CriteriaFilter} from "@/components/Contests/ContestFilter/CriteriaFilter";
 
 interface Props {
     applications: Application[] | null;
@@ -22,7 +22,7 @@ export function ContestScreen({ applications, contest}: Props) {
     const [budget, setBudget] = useState<string>(contest?.budget ? String(contest.budget) : '0');
 
     return (
-        <div className="gap-8 screen-w">
+        <div className="gap-8 w-full">
             <div className='flex-row gap-3'>
                 <Link href={routes.contests}>
                     <Button size='sm'>
@@ -33,7 +33,7 @@ export function ContestScreen({ applications, contest}: Props) {
                     Конкурс
                 </h2>
             </div>
-            <div className="flex-row justify-between">
+            <div className="flex-row justify-between flex-wrap gap-y-4">
                 <CriteriaFilter/>
                 <ContestBudget budget={budget} setBudget={setBudget}/>
             </div>
@@ -42,7 +42,7 @@ export function ContestScreen({ applications, contest}: Props) {
                 Заявки
                 {applications && <Badge>{applications.length}</Badge>}
             </div>
-            <div className="flex-row justify-between">
+            <div className="flex-row flex-wrap gap-y-4 justify-between">
                 <Input
                     className="max-w-[290px]"
                     type="text"
@@ -50,8 +50,8 @@ export function ContestScreen({ applications, contest}: Props) {
                 />
                 <NominationsSelect/>
             </div>
-            <div className="gap-8 grid grid-cols-2">
-                {mockApplications.map((application) => (
+            <div className="gap-8 sm:grid sm:grid-cols-2">
+                {applications && applications.map((application) => (
                     <ApplicationCard
                         key={application.id}
                         application={application}

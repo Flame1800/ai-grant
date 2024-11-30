@@ -18,7 +18,7 @@ export function ContestBudget({ budget, setBudget }: Props) {
 
     return (
         <>
-            <Card className="max-w-[200px] w-full p-5 bg-green-300 justify-between border-none rounded-3xl">
+            <Card className="sm:max-w-[200px] gap-y-4 w-full p-5 bg-green-300 justify-between border-none rounded-3xl max-w-full">
                 <div className="flex-row justify-between">
                     <p className="text-base">
                         Бюджет <br /> конкурса

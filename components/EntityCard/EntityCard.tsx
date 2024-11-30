@@ -14,7 +14,7 @@ interface Props {
 
 export function EntityCard({ title, subtitle, metrics, button, isCompare = false }: Props) {
     return (
-        <Card className="max-w-[440px] p-6 bg-gray-100 border-none rounded-3xl">
+        <Card className="p-6 bg-gray-100 border-none rounded-3xl">
             <p className="text-xl text-ellipsis overflow-hidden line-clamp-2">{title}</p>
 
             <div className="mt-[70px] flex-row justify-between">

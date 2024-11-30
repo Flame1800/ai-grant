@@ -1,6 +1,6 @@
-import { ContestScreen } from "@/components/Screens/ContestScreen";
 import useSupabaseServer from "@/lib/supabase/server";
 import {cookies} from "next/headers";
+import {ContestScreen} from "@/components/Screens/ContestScreen";
 
 export default async function Contest({ params }) {
     const {id} = await params

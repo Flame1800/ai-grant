@@ -16,26 +16,15 @@ interface Props {
 export function ContestCard({ contest }: Props) {
     const { title, description, budget } = contest;
 
-    const metrics: MetricProps[] = [
-        {
-            text: "Баллов",
-            value: 0,
-        },
-        {
-            text: "Бюджет",
-            value: budget ? formatNumber(budget) : '',
-        },
-    ];
-
     return (
         <EntityCard
             title={title}
             subtitle={description}
-            metrics={metrics}
+            metrics={[]}
             button={
                 <Link href={`${routes.contests}/${contest.id}`}>
-                    <Button className="rounded-full">
-                        <ArrowUpRight />
+                    <Button className="rounded-full gap-4">
+                       Открыть <ArrowUpRight />
                     </Button>
                 </Link>
             }

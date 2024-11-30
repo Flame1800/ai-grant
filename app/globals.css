@@ -77,6 +77,6 @@
 
 @layer components {
   .screen-w {
-    @apply max-w-[900px] mx-auto
+    @apply max-w-[1100px] w-full mx-auto px-4
   }
 }

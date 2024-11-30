@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Golos_Text } from "next/font/google";
+import {Header} from "@/components/Header";
 
 const golosText = Golos_Text({ subsets: ["latin"], weight: "variable" });
 
@@ -17,7 +18,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${golosText.className} flex justify-center`}>
-                <div className="max-w-[1200px] my-8 mx-auto">{children}</div>
+                <div className="screen-w my-8 mx-auto">
+                    <Header />
+                    {children}
+                </div>
             </body>
         </html>
     );

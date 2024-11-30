@@ -2,7 +2,7 @@
 
 import { MetricProps } from "@/components/EntityCard/Metric";
 import { EntityCard } from "@/components/EntityCard/EntityCard";
-import { ApplicationInfo } from "@/components/Applications/Application/ApplicationInfo";
+import { ApplicationDrawer } from "@/components/Applications/Application/ApplicationDrawer";
 import {Application} from "@/types";
 import {formatNumber} from "@/lib/formatNumber";
 
@@ -30,7 +30,7 @@ export function ApplicationCard({ application }: Props) {
             title={title}
             subtitle={description}
             metrics={metrics}
-            button={<ApplicationInfo />}
+            button={<ApplicationDrawer id={application.id} />}
         />
     );
 }

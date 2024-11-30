@@ -26,7 +26,7 @@ export default function WinChanceCard({ winChance, style }: Props) {
 
     return (
         <Card
-            className="flex flex-col h-[14rem] w-[14rem] bg-purple justify-between"
+            className="flex flex-col h-[14rem] sm:w-[14rem] w-full bg-purple justify-between"
             style={style}
         >
             <CardHeader>

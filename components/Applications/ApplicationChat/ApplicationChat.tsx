@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, Plus, Send } from "lucide-react";
+import { Send } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import {
@@ -11,30 +11,10 @@ import {
     CardHeader,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-} from "@/components/ui/dialog";
-import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from "@/components/ui/command";
+
 
 const users = [
     {
@@ -102,34 +82,16 @@ export function ApplicationChat() {
                         </Avatar>
                         <div>
                             <p className="text-sm font-medium leading-none">
-                                Sofia Davis
+                                ИИ Помощник
                             </p>
                             <p className="text-sm text-muted-foreground">
-                                m@example.com
+                                Создан помогать
                             </p>
                         </div>
                     </div>
-                    <TooltipProvider delayDuration={0}>
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <Button
-                                    size="icon"
-                                    variant="outline"
-                                    className="ml-auto rounded-full"
-                                    onClick={() => setOpen(true)}
-                                >
-                                    <Plus className="h-4 w-4" />
-                                    <span className="sr-only">New message</span>
-                                </Button>
-                            </TooltipTrigger>
-                            <TooltipContent sideOffset={10}>
-                                New message
-                            </TooltipContent>
-                        </Tooltip>
-                    </TooltipProvider>
                 </CardHeader>
                 <CardContent>
-                    <div className="space-y-4">
+                    <div className="space-y-4 overflow-scroll max-h-[310px]">
                         {messages.map((message, index) => (
                             <div
                                 key={index}
@@ -145,7 +107,7 @@ export function ApplicationChat() {
                         ))}
                     </div>
                 </CardContent>
-                <CardFooter className="self-end mt-[2rem]">
+                <CardFooter className="self-end">
                     <form
                         onSubmit={(event) => {
                             event.preventDefault();
@@ -180,101 +142,6 @@ export function ApplicationChat() {
                     </form>
                 </CardFooter>
             </Card>
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogContent className="gap-0 p-0 outline-none">
-                    <DialogHeader className="px-4 pb-4 pt-5">
-                        <DialogTitle>New message</DialogTitle>
-                        <DialogDescription>
-                            Invite a user to this thread. This will create a new
-                            group message.
-                        </DialogDescription>
-                    </DialogHeader>
-                    <Command className="overflow-hidden rounded-t-none border-t">
-                        <CommandInput placeholder="Search user..." />
-                        <CommandList>
-                            <CommandEmpty>No users found.</CommandEmpty>
-                            <CommandGroup className="p-2">
-                                {users.map((user) => (
-                                    <CommandItem
-                                        key={user.email}
-                                        className="flex flex-row items-center px-2"
-                                        onSelect={() => {
-                                            if (selectedUsers.includes(user)) {
-                                                return setSelectedUsers(
-                                                    selectedUsers.filter(
-                                                        (selectedUser) =>
-                                                            selectedUser !==
-                                                            user,
-                                                    ),
-                                                );
-                                            }
-
-                                            return setSelectedUsers(
-                                                [...users].filter((u) =>
-                                                    [
-                                                        ...selectedUsers,
-                                                        user,
-                                                    ].includes(u),
-                                                ),
-                                            );
-                                        }}
-                                    >
-                                        <Avatar>
-                                            <AvatarImage
-                                                src={user.avatar}
-                                                alt="Image"
-                                            />
-                                            <AvatarFallback>
-                                                {user.name[0]}
-                                            </AvatarFallback>
-                                        </Avatar>
-                                        <div className="ml-2">
-                                            <p className="text-sm font-medium leading-none">
-                                                {user.name}
-                                            </p>
-                                            <p className="text-sm text-muted-foreground">
-                                                {user.email}
-                                            </p>
-                                        </div>
-                                        {selectedUsers.includes(user) ? (
-                                            <Check className="ml-auto flex flex-row h-5 w-5 text-primary" />
-                                        ) : null}
-                                    </CommandItem>
-                                ))}
-                            </CommandGroup>
-                        </CommandList>
-                    </Command>
-                    <DialogFooter className="flex flex-row items-center border-t p-4 sm:justify-between">
-                        {selectedUsers.length > 0 ? (
-                            <div className="flex flex-row -space-x-2 overflow-hidden">
-                                {selectedUsers.map((user) => (
-                                    <Avatar
-                                        key={user.email}
-                                        className="inline-block border-2 border-background"
-                                    >
-                                        <AvatarImage src={user.avatar} />
-                                        <AvatarFallback>
-                                            {user.name[0]}
-                                        </AvatarFallback>
-                                    </Avatar>
-                                ))}
-                            </div>
-                        ) : (
-                            <p className="text-sm text-muted-foreground">
-                                Select users to add to this thread.
-                            </p>
-                        )}
-                        <Button
-                            disabled={selectedUsers.length < 2}
-                            onClick={() => {
-                                setOpen(false);
-                            }}
-                        >
-                            Continue
-                        </Button>
-                    </DialogFooter>
-                </DialogContent>
-            </Dialog>
         </>
     );
 }

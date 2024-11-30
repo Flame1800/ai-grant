@@ -8,7 +8,7 @@ interface FormatNumberOptions {
 
 export function formatNumber(num: number, options: FormatNumberOptions = {}): string {
     // console.log('formatNumber', num, options)
-    let { decimals = 10, decimalPlaces = 4, separator, minDigits = 1, disableUnit = false } = options
+    let { decimals = 0, decimalPlaces = 0, separator, minDigits = 1, disableUnit = false } = options
     if (num === undefined || num === null) return ''
 
     const op = num < 0 ? '-' : ''
@@ -57,7 +57,7 @@ export function formatNumber(num: number, options: FormatNumberOptions = {}): st
         }
     }
 
-    let result = `${op}${intPart}${decPart ? '.' : ''}${decPart || ''}`
+    let result = `${op}${intPart}`
 
     if (unit) {
         result += `${unit}`

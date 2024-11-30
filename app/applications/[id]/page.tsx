@@ -4,8 +4,24 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { cookies } from "next/headers";
+import useSupabaseServer from "@/lib/supabase/server";
+import { ApplicationChat } from "@/components/Applications/ApplicationChat/ApplicationChat";
 
-export default async function ApplicationPage() {
+export default async function ApplicationPage({ params }) {
+    const cookieStore = await cookies();
+    const supabase = useSupabaseServer(cookieStore);
+
+    const { id } = await params;
+
+    const { data: application } = await supabase
+        .from("applications")
+        .select("*, contest:contests(*)")
+        .eq("id", id)
+        .single();
+
+    if (application === null) return "No application";
+
     return (
         <main>
             <div className="flex flex-row justify-between mb-10">
@@ -19,12 +35,10 @@ export default async function ApplicationPage() {
                             className="text-gray-500"
                             style={{ lineHeight: "1rem" }}
                         >
-                            социально значимых проектов среди социально
-                            ориентированных некоммерческих организаций города
-                            Когалыма
+                            {application.contest!.title}
                         </span>
                     </div>
-                    <Link href="/">
+                    <Link href={application.contest!.link}>
                         <Button className="h-8 w-8">
                             <ArrowUpRight />
                         </Button>
@@ -35,8 +49,8 @@ export default async function ApplicationPage() {
                 <div className="grid grid-cols-2 gap-3">
                     {Array(6)
                         .fill(0)
-                        .map((criteria) => (
-                            <CriterionCard key={criteria} />
+                        .map((criteria, id) => (
+                            <CriterionCard key={id} />
                         ))}
                 </div>
                 <div className="flex gap-3">
@@ -48,7 +62,7 @@ export default async function ApplicationPage() {
                         Hello world
                     </div>
                 </div>
-                <div className="rounded-[28px] bg-sky-400 flex-grow" />
+                <ApplicationChat />
             </div>
         </main>
     );

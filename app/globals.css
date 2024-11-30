@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -76,5 +72,11 @@ body {
 
   div {
     @apply flex flex-col
+  }
+}
+
+@layer components {
+  .screen-w {
+    @apply max-w-[900px] mx-auto
   }
 }

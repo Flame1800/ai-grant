@@ -1,17 +1,44 @@
-import { Card } from "@/components/ui/card";
+"use client";
+
 import { Contest } from "@/components/Сontests/model";
+import { routes } from "@/constants/routes";
+import { MetricProps } from "@/components/EntityCard/Metric";
+import { EntityCard } from "@/components/EntityCard/EntityCard";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 interface Props {
     contest: Contest;
 }
 
 export function ContestCard({ contest }: Props) {
-    const { title, subtitle } = contest;
+    const { title, subtitle, applicationsCount, nominationsCount } = contest;
+
+    const metrics: MetricProps[] = [
+        {
+            text: "Баллов",
+            value: applicationsCount,
+        },
+        {
+            text: "Бюджет",
+            value: nominationsCount,
+        },
+    ];
 
     return (
-        <Card className="p-6 bg-gray-100 border-none rounded-3xl">
-            <p className="text-2xl">{title}</p>
-            <p className="text-base text-gray-500">{subtitle}</p>
-        </Card>
+        <EntityCard
+            title={title}
+            subtitle={subtitle}
+            metrics={metrics}
+            button={
+                <Link href={`${routes.contests}/${contest.id}`}>
+                    <Button className="rounded-full">
+                        <ArrowUpRight />
+                    </Button>
+                </Link>
+            }
+        />
     );
 }

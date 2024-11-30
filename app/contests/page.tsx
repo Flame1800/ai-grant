@@ -1,5 +1,5 @@
 import { ContestsScreen } from "@/components/Screens/ContestsScreen";
 
-export default function Competitions() {
+export default function Contests() {
     return <ContestsScreen />;
 }

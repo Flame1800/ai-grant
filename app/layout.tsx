@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Golos_Text } from "next/font/google";
 
-const golosText = Golos_Text({ subsets: ["latin"] });
+const golosText = Golos_Text({ subsets: ["latin"], weight: "variable" });
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -16,10 +16,8 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body
-                className={`${golosText.className} max-w-[1200px] mx-auto my-8`}
-            >
-                {children}
+            <body className={`${golosText.className} flex justify-center`}>
+                <div className="max-w-[1200px] my-8 mx-auto">{children}</div>
             </body>
         </html>
     );

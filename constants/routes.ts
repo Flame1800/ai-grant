@@ -1,4 +1,5 @@
 export const routes = {
-    main: '/',
-    contests: '/contests',
-}
+    main: "/",
+    contests: "/contests",
+    contest: "/contest",
+};

@@ -10,11 +10,8 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
-<<<<<<< Updated upstream
     "@radix-ui/react-slot": "^1.1.0",
-=======
     "@typescript-eslint/eslint-plugin": "^6.21.0",
->>>>>>> Stashed changes
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",

@@ -51,7 +51,7 @@ export function ContestScreen({ applications, contest}: Props) {
                 <NominationsSelect/>
             </div>
             <div className="gap-8 grid grid-cols-2">
-                {applications && applications.map((application) => (
+                {mockApplications.map((application) => (
                     <ApplicationCard
                         key={application.id}
                         application={application}

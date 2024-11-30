@@ -1,5 +1,5 @@
-import { mockCriteria } from "@/components/Сontests/mockContests";
-import { Criteria } from "@/components/Сontests/Criteria/Criteria";
+import { mockCriteria } from "@/components/Contests/mockContests";
+import { Criteria } from "@/components/Contests/Criteria/Criteria";
 import { Button } from "@/components/ui/button";
 import {
     Dialog,

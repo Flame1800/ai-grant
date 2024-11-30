@@ -4,13 +4,41 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { cookies } from "next/headers";
+import useSupabaseServer from "@/lib/supabase/server";
+import { ApplicationChat } from "@/components/Applications/ApplicationChat/ApplicationChat";
 
-export default async function ApplicationPage() {
+export default async function ApplicationPage({ params }) {
+    const cookieStore = await cookies();
+    const supabase = useSupabaseServer(cookieStore);
+
+    const { id } = await params;
+
+    const { data: application } = await supabase
+        .from("applications")
+        .select("*, contest:contests(*)")
+        .eq("id", id)
+        .single();
+
+    if (application === null) return "No application";
+
+    const hasBeenAnalyzed = application.gpt_score || application.llama_score)
+
+    if (!hasBeenAnalyzed) return "Эта заявка грузится";
+    let criteria, score;
+    if (application.gpt_analysis) {
+        criteria = JSON.parse(application.gpt_analysis);
+        score = application.gpt_score;
+    } else {
+        criteria = JSON.parse(application.llama_analysis);
+        score = application.llama_score;
+    }
+
     return (
         <main>
             <div className="flex flex-row justify-between mb-10">
                 <div>
-                    <h1 className="text-[48px]">Анализ заявки</h1>
+                    <h1 className="text-[48px]">{application.title}</h1>
                 </div>
                 <div className="flex flex-row">
                     <div className="text-sm w-[25rem]">
@@ -19,12 +47,10 @@ export default async function ApplicationPage() {
                             className="text-gray-500"
                             style={{ lineHeight: "1rem" }}
                         >
-                            социально значимых проектов среди социально
-                            ориентированных некоммерческих организаций города
-                            Когалыма
+                            {application.contest!.title}
                         </span>
                     </div>
-                    <Link href="/">
+                    <Link href={application.contest!.link!}>
                         <Button className="h-8 w-8">
                             <ArrowUpRight />
                         </Button>
@@ -33,22 +59,20 @@ export default async function ApplicationPage() {
             </div>
             <div className="flex flex-row gap-3">
                 <div className="grid grid-cols-2 gap-3">
-                    {Array(6)
-                        .fill(0)
-                        .map((criteria) => (
-                            <CriterionCard key={criteria} />
-                        ))}
+                    {criteria.map((criterion, id) => (
+                        <CriterionCard key={id} criteria={criterion} />
+                    ))}
                 </div>
                 <div className="flex gap-3">
                     <WinChanceCard
                         style={{ gridArea: "winChance" }}
-                        winChance={50}
+                        winChance={score * 10}
                     />
                     <div className="bg-red-100 flex-grow rounded-[28px] flex justify-center items-center">
                         Hello world
                     </div>
                 </div>
-                <div className="rounded-[28px] bg-sky-400 flex-grow" />
+                <ApplicationChat />
             </div>
         </main>
     );

@@ -1,9 +1,10 @@
 import { Database } from "@/constants/database.types";
 import { CookieOptions, createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import {RequestCookies, ResponseCookies} from "next/dist/compiled/@edge-runtime/cookies";
 
 export default function useSupabaseServer(
-    cookieStore: ReturnType<typeof cookies>,
+    cookieStore: Omit<RequestCookies, "set" | "clear" | "delete"> & Pick<ResponseCookies, "set" | "delete">,
     isAdmin: boolean = false,
 ) {
     return createServerClient<Database>(

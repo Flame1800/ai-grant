@@ -8,7 +8,7 @@ interface Props {
 
 export default function CriterionCard({ className = "" }: Props) {
     return (
-        <Card className={`w-48 h-40 bg-green ${className}`}>
+        <Card className={`w-48 h-40 bg-green-200 ${className}`}>
             <CardHeader>
                 <CardTitle className="text-base">Значение проекта</CardTitle>
             </CardHeader>

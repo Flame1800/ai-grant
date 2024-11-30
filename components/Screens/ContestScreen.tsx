@@ -1,34 +1,46 @@
+'use client';
+
 import { ApplicationCard } from "@/components/Applications/ApplicationCard/ApplicationCard";
-import { mockApplications } from "@/components/Applications/mockApplications";
 import { CriteriaFilter } from "@/components/Сontests/ContestFilter/CriteriaFilter";
-import { Card } from "@/components/ui/card";
-import { Pencil } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { NominationsSelect } from "@/components/Screens/NominationsSelect";
+import {ContestBudget} from "@/components/Сontests/ContestBudget/ContestBudget";
+import {useState} from "react";
+import {Application, Contest} from "@/types";
+import Link from "next/link";
+import {routes} from "@/constants/routes";
+import {Button} from "@/components/ui/button";
+import {ArrowLeftIcon} from "lucide-react";
 
-export function ContestScreen() {
+interface Props {
+    applications: Application[] | null;
+    contest: Contest | null;
+}
+
+export function ContestScreen({ applications, contest}: Props) {
+    const [budget, setBudget] = useState<string>(contest?.budget ? String(contest.budget) : '0');
+
     return (
         <div className="gap-8 screen-w">
-            <h2 className="mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-                Конкурс
-            </h2>
+            <div className='flex-row gap-3'>
+                <Link href={routes.contests}>
+                    <Button size='sm'>
+                        <ArrowLeftIcon/>
+                    </Button>
+                </Link>
+                <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+                    Конкурс
+                </h2>
+            </div>
             <div className="flex-row justify-between">
-                <CriteriaFilter />
-                <Card className="max-w-[200px] w-full p-5 bg-green-300 justify-between border-none rounded-3xl">
-                    <div className="flex-row justify-between">
-                        <p className="text-base">
-                            Бюджет <br /> конкурса
-                        </p>
-                        <Pencil />
-                    </div>
-                    <h2 className="text-2xl">200.000₽</h2>
-                </Card>
+                <CriteriaFilter/>
+                <ContestBudget budget={budget} setBudget={setBudget}/>
             </div>
 
             <div className="text-3xl flex-row w-fit items-center gap-3">
                 Заявки
-                <Badge>{mockApplications.length}</Badge>
+                {applications && <Badge>{applications.length}</Badge>}
             </div>
             <div className="flex-row justify-between">
                 <Input
@@ -36,10 +48,10 @@ export function ContestScreen() {
                     type="text"
                     placeholder="Поиск"
                 />
-                <NominationsSelect />
+                <NominationsSelect/>
             </div>
             <div className="gap-8 grid grid-cols-2">
-                {mockApplications.map((application) => (
+                {applications && applications.map((application) => (
                     <ApplicationCard
                         key={application.id}
                         application={application}

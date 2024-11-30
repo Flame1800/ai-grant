@@ -1,6 +1,6 @@
 export interface MetricProps {
     text: string;
-    value: string | number;
+    value: string | number | null;
 }
 
 export function Metric({ text, value }: MetricProps) {

@@ -1,4 +1,4 @@
-import {ApplicationReview} from "@/components/Applications/Application/ApplicationReview";
+import {ApplicationReview} from "@/components/Applications/ApplicationReview/ApplicationReview";
 
 export default async function ApplicationPage({ params }) {
     const { id } = await params;

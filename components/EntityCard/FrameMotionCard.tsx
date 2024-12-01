@@ -58,8 +58,8 @@ export default function FrameMotionCard() {
             boxShadow: "0px 0px 30px -7px rgba(0,0,0,0.25)",
             borderRadius: 10,
             backgroundColor: "white",
-            width: 300,
-            height: 400,
+            width: 250,
+            height: 350,
             transformStyle: "preserve-3d",
             perspective: 800, // Set perspective on the card
             cardRotateX,

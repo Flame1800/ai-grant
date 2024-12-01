@@ -4,12 +4,12 @@ import FrameMotionCard from "../EntityCard/FrameMotionCard";
 
 function DashBoards() {
     return (
-        <div className="w-full flex-row">
-            <div className="max-w-[454px] w-full h-[591px] bg-[#f1f1f1] rounded-[28px]">
+        <div className="w-full flex-row flex-wrap max-sm:justify-center">
+            <div className="max-w-[454px] w-full h-[591px] bg-[#f1f1f1] rounded-[28px] mr-[20px] max-sm:max-w-[320px]">
                 <FrameMotionCard />
             </div>
-            <div className="">
-                <div className="">
+            <div className="justify-between max-sm:items-center">
+                <div className="flex-row w-full justify-between max-sm:flex-wrap max-sm:justify-center max-sm:mt-[20px]">
                     <div className="bg-[#EDFF8E] rounded-[28px] max-w-[304px] w-full h-[293px] ">
                         <div className="flex-row w-full justify-between">
                             <h1 className="leading-5 text-[20px] font-medium mt-[22px] ml-[22px]">
@@ -35,7 +35,7 @@ function DashBoards() {
                             <div className="h-[37px] w-[40px] bg-black bg-opacity-50 rounded-[8px]" />
                         </div>
                     </div>
-                    <div className="bg-[#CABCF8] rounded-[28px] max-w-[304px] w-full h-[293px]">
+                    <div className="bg-[#CABCF8] rounded-[28px] max-w-[304px] w-full h-[293px] max-sm:my-[20px]">
                         <div className="flex-row w-full justify-between items-start">
                             <h1 className="leading-5 text-[20px] font-medium mt-[22px] ml-[22px]">
                                 Общее количество
@@ -75,7 +75,7 @@ function DashBoards() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-[#A4FEB7] max-w-[624px] w-full h-[278px] rounded-[28px] overflow-hidden">
+                <div className="bg-[#A4FEB7] max-w-[624px] w-full h-[278px] rounded-[28px] overflow-hidden max-sm:max-w-[304px]">
                     <h1 className="leading-5 text-[20px] font-medium mt-[22px] ml-[22px]">
                         Проанализированные
                         <br /> заявки AI

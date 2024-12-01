@@ -19,7 +19,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${golosText.className} flex justify-center`}>
                 <div className="w-full h-screen flex items-center">
-                    <div className="max-w-[1158px] w-full items-center">
+                    <div className="max-w-[1158px] w-full items-center p-4">
                         <Header />
                         {children}
                     </div>

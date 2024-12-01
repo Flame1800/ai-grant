@@ -24,7 +24,7 @@ export async function ContestsScreen() {
         <div>
             <DashBoards />
             <div className="gap-6 mt-[90px]">
-                <div className="flex-row">
+                <div className="flex-row p-4">
                     <h2 className="mt-10 scroll-m-20 text-5xl font-medium tracking-tight transition-colors first:mt-0">
                         Все конкурсы
                     </h2>

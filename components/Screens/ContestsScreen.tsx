@@ -3,6 +3,16 @@ import React from "react";
 import useSupabaseServer from "@/lib/supabase/server";
 import { ContestCard } from "@/components/Contests/ContestCard/ContestCard";
 import DashBoards from "./DashBoards";
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
+
 DashBoards;
 export async function ContestsScreen() {
     const cookieStore = await cookies();
@@ -11,7 +21,7 @@ export async function ContestsScreen() {
     const { data, error } = await supabase.from("contests").select();
 
     return (
-        <div className="mb-[50px]">
+        <div>
             <DashBoards />
             <div className="gap-6 mt-[90px]">
                 <div className="flex-row">

@@ -4,7 +4,7 @@ import FrameMotionCard from "../EntityCard/FrameMotionCard";
 
 function DashBoards() {
     return (
-        <div className="">
+        <div className="w-full flex-row">
             <div className="max-w-[454px] w-full h-[591px] bg-[#f1f1f1] rounded-[28px]">
                 <FrameMotionCard />
             </div>

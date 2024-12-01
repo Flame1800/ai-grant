@@ -18,7 +18,7 @@ export const CompareApplications = (props: any): any => {
                     <Tooltip delayDuration={50}>
                         <TooltipTrigger asChild>
                             <div className='rounded-full'>
-                                <p>Сравнить заявки</p>
+                                <p className="text-sm">Сравнить заявки</p>
                             </div>
                         </TooltipTrigger>
                         <TooltipContent>

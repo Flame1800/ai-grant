@@ -24,6 +24,8 @@ const buttonVariants = cva(
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
+        homePage: "py-2 px-4",
+        contestBtn: "w-[60px] h-[60px]",
       },
     },
     defaultVariants: {

@@ -2,7 +2,7 @@
 
 import { MetricProps } from "@/components/EntityCard/Metric";
 import { EntityCard } from "@/components/EntityCard/EntityCard";
-import { ApplicationDrawer } from "@/components/Applications/Application/ApplicationDrawer";
+import { ApplicationDrawer } from "@/components/Applications/ApplicationReview/ApplicationDrawer";
 import {Application} from "@/types";
 import {formatNumber} from "@/lib/formatNumber";
 
@@ -26,6 +26,7 @@ export function ApplicationCard({ application }: Props) {
 
     return (
         <EntityCard
+            id={application.id}
             isCompare
             title={title}
             subtitle={description}

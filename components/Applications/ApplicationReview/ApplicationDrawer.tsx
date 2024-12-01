@@ -11,7 +11,7 @@ import {
     DrawerFooter, DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer";
-import {ApplicationReview} from "@/components/Applications/Application/ApplicationReview";
+import {ApplicationReview} from "@/components/Applications/ApplicationReview/ApplicationReview";
 
 export function ApplicationDrawer({ id }: { id: number }) {
     const [goal, setGoal] = React.useState(1500);

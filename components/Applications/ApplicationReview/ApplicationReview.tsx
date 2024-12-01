@@ -29,7 +29,7 @@ export const ApplicationReview = ({ id }: Props) => {
                 .eq("id", id)
                 .single();
             if (error) {
-                console.error('Application fetch error', error);
+                console.error('ApplicationReview fetch error', error);
             } else {
                 setApplication(application);
             }

@@ -18,6 +18,7 @@ export function ContestCard({ contest }: Props) {
 
     return (
         <EntityCard
+            id={contest.id}
             title={title}
             subtitle={description}
             metrics={[]}

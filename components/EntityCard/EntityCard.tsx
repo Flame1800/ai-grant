@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Metric, MetricProps } from "@/components/EntityCard/Metric";
 import { ReactNode } from "react";
+import {CompareButton} from "@/components/CompareApplications/CompareButton";
 
 interface Props {
     title: string | null;
@@ -10,9 +11,10 @@ interface Props {
     metrics: MetricProps[];
     button: ReactNode;
     isCompare?: boolean
+    id: number
 }
 
-export function EntityCard({ title, subtitle, metrics, button, isCompare = false }: Props) {
+export function EntityCard({ title, subtitle, metrics, button, isCompare = false, id }: Props) {
     return (
         <Card className="p-6 bg-gray-100 border-none rounded-3xl">
             <p className="text-xl text-ellipsis overflow-hidden line-clamp-2">{title}</p>
@@ -29,20 +31,7 @@ export function EntityCard({ title, subtitle, metrics, button, isCompare = false
                 </div>
 
                 <div className="gap-1 flex-row">
-                    {isCompare && <Badge className="h-[40px] flex justify-center">
-                        <div className="flex flex-row items-center space-x-2">
-                            <Checkbox
-                                id={String(title + subtitle)}
-                                className="bg-slate-100"
-                            />
-                            <label
-                                htmlFor="terms"
-                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                            >
-                                Сравнить
-                            </label>
-                        </div>
-                    </Badge>}
+                    {isCompare && <CompareButton id={id} />}
                     {button}
                 </div>
             </div>

@@ -7,7 +7,7 @@ import { routes } from "@/constants/routes";
 
 export function Header() {
     return (
-        <div className="sm:flex-row gap-10 mb-5 w-full">
+        <div className="sm:flex-row gap-10 mb-5 w-full items-center max-w-[1117px]">
             <div>
                 <p className="text-2xl">Ai Grant</p>
             </div>

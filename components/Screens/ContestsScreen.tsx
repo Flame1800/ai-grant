@@ -1,27 +1,30 @@
-import {cookies} from "next/headers";
+import { cookies } from "next/headers";
+import React from "react";
 import useSupabaseServer from "@/lib/supabase/server";
-import {ContestCard} from "@/components/Contests/ContestCard/ContestCard";
-
+import { ContestCard } from "@/components/Contests/ContestCard/ContestCard";
+import DashBoards from "./DashBoards";
+DashBoards;
 export async function ContestsScreen() {
     const cookieStore = await cookies();
-    const supabase = useSupabaseServer(cookieStore)
+    const supabase = useSupabaseServer(cookieStore);
 
-    const { data, error } = await supabase
-        .from('contests')
-        .select()
+    const { data, error } = await supabase.from("contests").select();
 
     return (
-        <div className="gap-6">
-            <div className='flex-row'>
-                <h2 className="mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-                    Конкурсы
-                </h2>
-            </div>
-
-            <div className="gap-8 sm:grid sm:grid-cols-2">
-                {data && data.map((contest) => (
-                    <ContestCard key={contest.id} contest={contest} />
-                ))}
+        <div className="mb-[50px]">
+            <DashBoards />
+            <div className="gap-6 mt-[90px]">
+                <div className="flex-row">
+                    <h2 className="mt-10 scroll-m-20 text-5xl font-medium tracking-tight transition-colors first:mt-0">
+                        Все конкурсы
+                    </h2>
+                </div>
+                <div className="gap-8 sm:grid sm:grid-cols-2">
+                    {data &&
+                        data.map((contest) => (
+                            <ContestCard key={contest.id} contest={contest} />
+                        ))}
+                </div>
             </div>
         </div>
     );
